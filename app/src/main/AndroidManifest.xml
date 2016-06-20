@@ -16,14 +16,24 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".camps">
+        android:name=".camps">
+
+        <intent-filter>
+            <action android:name="com.example.hussain.bloodconnectclient.camps" />
+
+            <category android:name="android.intent.category.default" />
+        </intent-filter>
+        </activity>
+        <activity
+            android:name=".donorForm">
 
             <intent-filter>
-                <action android:name="com.example.hussain.bloodconnectclient.camps" />
+                <action android:name="com.example.hussain.bloodconnectclient.donorForm" />
 
                 <category android:name="android.intent.category.default" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
