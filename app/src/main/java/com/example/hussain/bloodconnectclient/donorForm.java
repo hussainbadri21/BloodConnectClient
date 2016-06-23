@@ -1,6 +1,7 @@
 package com.example.hussain.bloodconnectclient;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,6 +31,7 @@ public class donorForm extends Activity  implements AdapterView.OnItemSelectedLi
     TextView tx;
     String donated;
     Spinner spinner;
+            String name,age,adress,height,weight,last;
     private String URL_NEW_PREDICTION = "http://blloodconnect.net16.net/donor_phpcode.php";
     RadioGroup rg1;
     RadioButton rb1;
@@ -80,18 +82,38 @@ submitButton.setOnClickListener(new View.OnClickListener() {
         String height=ed4.getText().toString();
         String weight=ed5.getText().toString();
         String last;
-        if(donated.equalsIgnoreCase("yes"))
-            last=ed6.getText().toString();
-        else
-        last="NULL";
+
         String blood=spinner.getItemAtPosition(spinner.getSelectedItemPosition()).toString();
 
-        new AddNewPrediction().execute(name,age,adress,height,weight,blood,donated,last);
-Toast.makeText(getApplicationContext(),"Data Submitted",Toast.LENGTH_SHORT).show();
+        boolean check = checkFields();
+
+        if(!check) {
+            return;
+        }
+
+        else {
+            if(donated.equalsIgnoreCase("yes"))
+                last=ed6.getText().toString();
+            else
+                last="NULL";
+                new AddNewPrediction().execute(name, age, adress, height, weight, blood, donated, last);
+                Intent i = new Intent(donorForm.this, done.class);
+                startActivity(i);
+            }
 
     }
 });
 
+    }
+    public boolean checkFields()
+    {
+        if(ed1.length()==0 || ed2.length()==0  || ed3.length()==0  || ed4.length()==0  || ed5.length()==0   || rg1.getCheckedRadioButtonId()==-1 || spinner.getSelectedItemPosition() == 0 )
+       // if(name.length()==0 || age.length()==0  || adress.length()==0  || height.length()==0  || weight.length()==0  || last.length()==0 || rg1.getCheckedRadioButtonId()==-1 || spinner.getSelectedItemPosition() == 0 )
+        {
+            Toast.makeText(getApplicationContext(),"Fill all fields",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+       return  true;
     }
     private class AddNewPrediction extends AsyncTask<String, Void, Void> {
 

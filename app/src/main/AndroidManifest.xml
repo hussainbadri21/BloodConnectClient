@@ -8,11 +8,19 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity">
+        <activity
+            android:name=".splashS">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".LoginActivity">
+            <intent-filter>
+                <action android:name="com.example.hussain.bloodconnectclient.LoginActivity" />
+
+                <category android:name="android.intent.category.default"/>
             </intent-filter>
         </activity>
         <activity
@@ -29,6 +37,15 @@
 
             <intent-filter>
                 <action android:name="com.example.hussain.bloodconnectclient.donorForm" />
+
+                <category android:name="android.intent.category.default" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".done">
+
+            <intent-filter>
+                <action android:name="com.example.hussain.bloodconnectclient.done" />
 
                 <category android:name="android.intent.category.default" />
             </intent-filter>
