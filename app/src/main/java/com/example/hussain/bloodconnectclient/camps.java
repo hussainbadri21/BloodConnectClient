@@ -36,7 +36,7 @@ public class camps extends Activity {
         Toast.makeText(getApplicationContext(),
                 parent.getItemAtPosition(position) + "  is selected.", Toast.LENGTH_LONG)
                 .show();
-        Intent intent = new Intent(camps.this, donorForm.class);
+        Intent intent = new Intent(camps.this, camp2.class);
 
         startActivity(intent);
     }

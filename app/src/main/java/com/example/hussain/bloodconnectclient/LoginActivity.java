@@ -41,18 +41,27 @@ public void buttons()
                         else
                         {
 
-                       if(user.equalsIgnoreCase("admin")==false)
-                            Toast.makeText(getApplicationContext(), "Incorrect Username", Toast.LENGTH_SHORT)
-                                    .show();
+                       if(user.equalsIgnoreCase("admin")==false) {
+                           Toast.makeText(getApplicationContext(), "Incorrect Username", Toast.LENGTH_SHORT)
+                                   .show();
+                          txtuser.setText(null);
+                           txtpwd.setText(null);
+                       }
                         if(pass.equalsIgnoreCase("admin")==false)
+                        {
                             Toast.makeText(getApplicationContext(), "Incorrect Password", Toast.LENGTH_SHORT)
                                     .show();
+
+                                txtuser.setText(null);
+                            txtpwd.setText(null);
+                            }
 
                         if (user.equalsIgnoreCase("admin") == true && pass.equalsIgnoreCase("admin") == true) {
                             Toast.makeText(getApplicationContext(), "Login Sucessful!", Toast.LENGTH_SHORT)
                                     .show();
                             Intent intent = new Intent(LoginActivity.this, camps.class);
                             startActivity(intent);
+                            finish();
                        }
 
                             //finish();
